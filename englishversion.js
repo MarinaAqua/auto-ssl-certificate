@@ -273,10 +273,11 @@ export default {
   </head>
   <body>
       <div class="container">
-          <h1>IP6.ARPA Automatically add SSL certificate to domain name</h1>
+          <h1>Automatically add SSL certificate to domain name</h1>
+          
           <h1>CLUB GRATIS</h1>
           
-          <a href="https://tb.netassist.ua" class="register-btn" target="_blank">Register the ip6.arpa domain name</a>
+          <a href="https://tb.netassist.ua" class="register-btn" target="_blank">Register the domain name free</a>
           
           <form id="ssl-form">
               <div class="form-group">
@@ -310,7 +311,7 @@ export default {
               <p>1. Please ensure that you have entered the correct Cloudflare account information.</p>
               <p>2. Please make sure your ip6.arpa domain is activated in Cloudflare before adding it.</p>
               <p>3. After adding successfully, please wait for 10 minutes and then check the SSL/TLS certificate in the domain menu</p>
-              <p>4. This tool uses the Cloudflare API to add an SSL certificate to your IP6.ARPA domain</p>
+              <p>4. This tool uses the Cloudflare API to add an SSL certificate to your IPV6 domain</p>
           </div>
           
           <div class="footer">
