@@ -72,11 +72,16 @@ export default {
   
   function getHTML() {
     return `<!DOCTYPE html>
-  <html lang="zh-CN">
+  <html lang="id">
   <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Tambahkan sertifikat SSL secara otomatis ke nama domain</title>
+  <!-- Font Awesome v6 (icon terbaru) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="icon" href="https://raw.githubusercontent.com/MarinaAqua/MarinaAqua/main/my-profil.png"/>
+  <script src="https://cdn.tailwindcss.com"></script>
       <style>
           * {
               box-sizing: border-box;
@@ -269,15 +274,153 @@ export default {
               font-size: 12px;
               color: #7f8c8d;
           }
+    .glow-box-content {
+      position: relative;
+      z-index: 1;
+      font-size: clamp(2.5rem, 6vw, 3rem);
+      font-weight: bold;
+      background: linear-gradient(270deg, red, orange, yellow, green, cyan, blue, violet, red);
+      background-size: 400%;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: shimmerText 5s linear infinite;
+      text-align: center;
+      text-shadow: 0 0 10px rgba(255,255,255,0.3), 0 0 20px rgba(0,255,255,0.2);
+    }
+
+    @keyframes shimmerText {
+      0% { background-position: 200% center; }
+      100% { background-position: 0% center; }
+    }
+    .social-footer {
+      margin-top: 1rem;
+      margin-bottom:1rem;
+      text-align: center;
+      font-size: 1.8rem;
+    }
+    .social-footer a {
+      color: #ccc;
+      margin: 0 10px;
+      transition: color 0.3s;
+    }
+    .social-footer a:hover {
+      color: #fff;
+    }
+    
+    .copyright-footer {
+      text-align: center;
+      margin-top: 0.8rem;
+      margin-bottom:1rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+      /* Rainbow Text Styles */
+    .rainbow-text {
+      font-weight: bold;
+      text-align: center;
+      text-transform: uppercase;
+      background: linear-gradient(270deg, red, orange, yellow, green, cyan, blue, violet, red);
+      background-size: 200% auto;
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+      animation: shimmer 5s linear infinite;
+      text-shadow: 0 0 5px #fff5, 0 0 5px #0ff6;
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: 200% center;
+      }
+      100% {
+        background-position: 0% center;
+      }
+    }
+    /* Pop-up styling */
+    #donate-popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    #donate-popup-content {
+      background-color: #1f2937;
+      padding: 2rem;
+      border-radius: 10px;
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    #donate-popup-content img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Button Positioning and Size */
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 500px;
+      margin-top: 20px;
+      margin-bottom: 30px; /* Tambahan JARAK bawah */
+      
+    }
+
+    .button-container button {
+      flex: 1;
+      max-width: 120px; /* Membatasi lebar tombol */
+      font-size: 0.875rem; /* Ukuran font lebih kecil */
+      padding: 8px 16px; /* Padding lebih kecil */
+      margin: 0 5px; /* Jarak antar tombol */
+    }
+
+    /* Button Hover Effects */
+    .button-container button:hover {
+      opacity: 0.9;
+    }
       </style>
   </head>
   <body>
       <div class="container">
+   <!-- Neon CLUB GRATIS -->
+        <h1 class="glow-box-content w-full mt-2 mb-5"> CLUB GRATIS </h1>
+          
           <h1>Tambahkan sertifikat SSL secara otomatis ke nama domain</h1>
           
-          <h1>CLUB GRATIS</h1>
+    <!-- Button Donate and Link (aligned left and right) -->
+    <div class="button-container mb-4">
+      <!-- Donate Button -->
+      <button id="donate-button" onclick="openDonatePopup()" class="group bg-transparent text-pink-500 rounded-lg hover:bg-transparent flex items-center justify-center transition">
+  <i class="fas fa-donate mr-2 text-pink-400 group-hover:text-pink-300 transition"></i>
+  <span class="group-hover:text-pink-200 transition">Donate</span>
+</button>
+
+      <!-- Link Button -->
+      <button id="link-button" onclick="openLink()" class="group bg-transparent text-blue-500 rounded-lg hover:bg-transparent flex items-center justify-center transition">
+  <i class="fas fa-house mr-2 text-blue-400 group-hover:text-blue-300 transition"></i>
+  <span class="group-hover:text-blue-200 transition">Home</span>
+</button>
+    </div>
           
           <a href="https://tb.netassist.ua" class="register-btn" target="_blank">Daftarkan nama domain gratis</a>
+          
+  <!-- Donate QR Popup -->
+  <div id="donate-popup" class="flex justify-center items-center">
+    <div id="donate-popup-content">
+      <h2 class="text-xl font-semibold text-white mb-4">Scan QR to Donate</h2>
+      <img src="https://raw.githubusercontent.com/MarinaAqua/MarinaAqua/main/qr-donate.jpg" alt="QR Code" />
+      <button onclick="closeDonatePopup()" class="mt-4 bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-500">Close</button>
+    </div>
+  </div>
           
           <form id="ssl-form">
               <div class="form-group">
@@ -317,6 +460,25 @@ export default {
           <div class="footer">
               <p>Perhatian: Kunci API Anda hanya digunakan untuk permintaan ini, Tidak akan disimpan</p>
           </div>
+  <footer class="social-footer">
+  <a href="https://github.com/MarinaAqua" target="_blank">
+    <i class="fab fa-github text-gray-400 hover:text-white transition"></i>
+  </a>
+  <a href="https://youtube.com/@mrkingsofficial6366" target="_blank">
+    <i class="fab fa-youtube text-red-500 hover:text-red-400 transition"></i>
+  </a>
+  <a href="https://t.me/club_gratis" target="_blank">
+    <i class="fab fa-telegram text-blue-400 hover:text-blue-300 transition"></i>
+  </a>
+</footer>
+
+  <div class="rainbow-text mb-8">
+    <a class="text-1xl">CLUB GRATIS</a>
+    </div>
+          <div class="copyright-footer">
+            &copy; <span id="year"></span> Club Gratis. Allrights reserved.
+            </div>
+          
       </div>
   
       <script>
@@ -431,6 +593,25 @@ export default {
               resultElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
           }
       </script>
+       <script>
+    // Fungsi untuk menampilkan pop-up QR
+    function openDonatePopup() {
+      document.getElementById('donate-popup').style.display = "flex";
+    }
+
+    // Fungsi untuk menutup pop-up QR
+    function closeDonatePopup() {
+      document.getElementById('donate-popup').style.display = "none";
+    }
+
+    // Fungsi untuk membuka Link yang dituju
+    function openLink() {
+      // Masukkan URL yang ingin ditampilkan
+      const url = "https://clubgratis.biz.id"; // Ganti URL sesuai kebutuhan
+      window.open(url, '_blank');  // Membuka URL di tab baru
+    }
+    document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
   </body>
   </html>`;
   }
